@@ -5,16 +5,19 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 @EnableWebSecurity
 public class PublicSecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    @Order(2)  // Higher order number means this will be evaluated after other security filters
+    public SecurityFilterChain publicSecurityFilterChain(HttpSecurity http) throws Exception {
         http
+            .securityMatcher("/api/public/**")
             .authorizeHttpRequests(auth -> auth
-                .anyRequest().permitAll()  // Allow all requests without authentication
+                .anyRequest().permitAll()  // Allow all other requests without authentication
             )
             .csrf(csrf -> csrf.disable())  // Disable CSRF for simplicity (not recommended for production)
             .httpBasic(httpBasic -> httpBasic.disable())  // Disable HTTP Basic authentication

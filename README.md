@@ -5,3 +5,8 @@ Using Spring Security, secure a number of REST end-points
 * add another end-point that should be secure and require relevant role
 
 * implement unit tests
+
+### CuRL
+```declarative
+curl -v -u user:password http://localhost:8080/api/guest
+```
