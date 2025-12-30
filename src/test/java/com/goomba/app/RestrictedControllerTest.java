@@ -23,7 +23,7 @@ class RestrictedControllerTest {
     void whenAuthenticated_thenCanAccessRestrictedEndpoint() throws Exception {
         mockMvc.perform(get("/api/restricted"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("You have access..."));
+                .andExpect(content().string("You have access... user"));
     }
 
     @Test

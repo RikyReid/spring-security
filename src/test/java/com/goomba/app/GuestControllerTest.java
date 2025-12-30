@@ -23,7 +23,7 @@ class GuestControllerIntegrationTest {
     void whenAuthenticatedAsGuest_thenCanAccessGuestEndpoint() throws Exception {
         mockMvc.perform(get("/api/guest"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hey there guest..."));
+                .andExpect(content().string("Hey there guest... guest"));
     }
 
     @Test
