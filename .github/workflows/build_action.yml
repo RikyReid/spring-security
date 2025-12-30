@@ -24,3 +24,9 @@ jobs:
         with:
           name: jacoco-report
           path: build/reports/jacoco/test/html/
+
+      - name: Upload JUnit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-report
+          path: build/reports/tests/test
